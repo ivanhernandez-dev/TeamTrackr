@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+  teamtrackr-app:
+    container_name: teamtrackr-app
+    build:
+      context: ./docker
+      args:
+        UID: $U_ID
+    volumes:
+      - ./:/var/www/html
+    environment:
+      XDEBUG_CLIENT_HOST: 172.0.0.1
+      XDEBUG_CLIENT_PORT: 9003
+      PHP_IDE_CONFIG: serverName=symfony-server
+    ports:
+      - '1000:80'
+    networks:
+      - teamtrackr-app-network
+    depends_on:
+      - teamtrackr-app-mysql
+
+  teamtrackr-app-mysql:
+    container_name: teamtrackr-app-mysql
+    image: mysql:8.2.0
+    ports:
+      - '3336:3306'
+    environment:
+      MYSQL_DATABASE: teamtrackr-app
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - teamtrackr-app-mysql-data:/var/lib/mysql
+    networks:
+      - teamtrackr-app-network
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+
+networks:
+  teamtrackr-app-network:
+    name: teamtrackr-app-network
+
+volumes:
+  teamtrackr-app-mysql-data:
