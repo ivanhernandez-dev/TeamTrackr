@@ -24,10 +24,10 @@ services:
         public: true
 
     # Dependency Injection
-    App\TeamTrackr\Employees\Domain\EmployeeRepository: '@TeamTrackr\Employees\Infrastructure\Persistence\DoctrineEmployeeRepository'
+    App\TeamTrackr\Employees\Domain\Contract\EmployeeRepository: '@App\TeamTrackr\Employees\Infrastructure\Persistence\DoctrineEmployeeRepository'
 
     # Tagging
-    App\TeamTrackr\Shared\Infrastructure\Doctrine\DatabaseConnections:
+    App\TeamTrackr\Shared\Infrastructure\Persistence\Doctrine\DatabaseConnections:
         arguments: [!tagged database_connection]
 
     # Controllers
