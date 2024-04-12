@@ -24,10 +24,10 @@ services:
     ports:
       - '3336:3306'
     environment:
-      MYSQL_DATABASE: teamtrackr-app
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - teamtrackr-app-mysql-data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
     networks:
       - teamtrackr-app-network
     command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
