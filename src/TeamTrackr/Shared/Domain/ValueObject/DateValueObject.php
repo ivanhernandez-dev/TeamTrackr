@@ -22,6 +22,6 @@ abstract class DateValueObject implements \Stringable
 
     public function __toString(): string
     {
-        return \Datetime::createFromFormat('Y-m-d', $this->value())->format('Y-m-d');
+        return \DateTime::createFromFormat('Y-m-d', $this->value())->format('Y-m-d');
     }
 }

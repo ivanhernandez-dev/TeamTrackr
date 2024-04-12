@@ -11,13 +11,15 @@ use App\TeamTrackr\Employees\Domain\ValueObject\EmployeeId;
 
 final readonly class EmployeeFinder
 {
-    public function __construct(private EmployeeRepository $repository) {}
+    public function __construct(private EmployeeRepository $repository)
+    {
+    }
 
     public function __invoke(EmployeeId $id): Employee
     {
         $employee = $this->repository->search($id);
 
-        if ($employee === null) {
+        if (null === $employee) {
             throw new EmployeeNotExist($id);
         }
 

@@ -6,27 +6,37 @@ namespace App\TeamTrackr\Shared\Domain\ValueObject;
 
 use Ramsey\Uuid\Uuid as RamseyUuid;
 
-abstract class UuidValueObject
+abstract class UuidValueObject implements \Stringable
 {
-    public function __construct(protected string $value)
+    final public function __construct(protected string $value)
     {
         $this->ensureIsValid($value);
     }
 
-    public function value(): string
-    {
-        return $this->value;
-    }
-
-    public function random(): self
+    final public static function random(): self
     {
         return new static(RamseyUuid::uuid4()->toString());
     }
 
-    private function ensureIsValid(string $value): void
+    final public function value(): string
     {
-        if (!RamseyUuid::isValid($value)) {
-            throw new \InvalidArgumentException(sprintf('<%s> does not allow the value <%s>.', self::class, $value));
+        return $this->value;
+    }
+
+    final public function equals(self $other): bool
+    {
+        return $this->value() === $other->value();
+    }
+
+    public function __toString(): string
+    {
+        return $this->value();
+    }
+
+    private function ensureIsValid(string $id): void
+    {
+        if (!RamseyUuid::isValid($id)) {
+            throw new \InvalidArgumentException(sprintf('<%s> does not allow the value <%s>.', self::class, $id));
         }
     }
 }
