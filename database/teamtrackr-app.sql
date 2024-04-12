@@ -16,17 +16,15 @@
 
 
 -- Dumping database structure for teamtrackr-app
-DROP DATABASE IF EXISTS `teamtrackr-app`;
 CREATE DATABASE IF NOT EXISTS `teamtrackr-app` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `teamtrackr-app`;
 
 -- Dumping structure for table teamtrackr-app.employees
-DROP TABLE IF EXISTS `employees`;
 CREATE TABLE IF NOT EXISTS `employees` (
-  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `last_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `gender` char(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `last_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `gender` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hire_date` date DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
