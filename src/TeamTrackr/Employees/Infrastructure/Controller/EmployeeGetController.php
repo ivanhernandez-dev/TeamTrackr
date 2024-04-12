@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\TeamTrackr\Employees\Infrastructure\Controller;
 
 use App\TeamTrackr\Employees\Application\Find\EmployeeFinder;
+use App\TeamTrackr\Employees\Domain\ValueObject\EmployeeId;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -18,7 +19,7 @@ final class EmployeeGetController
 
     public function __invoke(Request $request): JsonResponse
     {
-        $employee = $this->finder->__invoke($request->get('id'));
+        $employee = $this->finder->__invoke(new EmployeeId($request->get('id')));
 
         return new JsonResponse(
             [

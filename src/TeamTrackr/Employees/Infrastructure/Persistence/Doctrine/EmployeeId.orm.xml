@@ -4,8 +4,8 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="App\TeamTrackr\Employees\Domain\EmployeeBirthDate">
-        <field name="value" type="date" column="birth_date" />
+    <embeddable name="App\TeamTrackr\Employees\Domain\EmployeeId">
+        <id name="value" type="string" column="employee_id" length="36" />
     </embeddable>
 
 </doctrine-mapping>

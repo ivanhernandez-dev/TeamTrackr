@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="App\Employees\Domain\EmployeeLastName">
+    <embeddable name="App\TeamTrackr\Employees\Domain\EmployeeLastName">
         <field name="value" type="string" column="last_name" length="50" />
     </embeddable>
 
