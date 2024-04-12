@@ -7,7 +7,7 @@ namespace App\TeamTrackr\Employees\Infrastructure\Controller;
 use App\TeamTrackr\Employees\Application\Find\EmployeeFinder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/employees/{id}', name: 'employee_get', methods: ['GET'])]
 final class EmployeeGetController
