@@ -1,5 +1,3 @@
-version: '3.5'
-
 services:
   teamtrackr-app:
     container_name: teamtrackr-app
